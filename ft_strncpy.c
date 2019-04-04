@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:03:42 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 19:40:41 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/04 19:21:20 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/04 19:26:35 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	const unsigned char	*s1_byte;
-	const unsigned char	*s2_byte;
+	size_t	src_len;
 
-	s1_byte = (const unsigned char *)s1;
-	s2_byte = (const unsigned char *)s2;
-	while (n--)
-		if (*s1_byte++ != *s2_byte++)
-			return (*--s1_byte - *--s2_byte);
-	return (0);
+	src_len = ft_strlen(src);
+	ft_memcpy(dst, src, len);
+	if (len > src_len)
+		ft_bzero(dst + src_len, len - src_len);
+	return (dst);
 }

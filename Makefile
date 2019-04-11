@@ -16,16 +16,20 @@ OBJECTS = $(patsubst %.c,objs/%.o,$(SOURCES))
 FLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
+DYNN = libft.so
 
 all: prepare compile
 
 prepare:
 	mkdir -p objs
 
-compile: $(NAME)
+compile: $(NAME) so
 
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
+
+so: $(OBJECTS)
+	gcc -shared -fPIC -o $(DYNN) $(OBJECTS)
 
 objs/%.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
@@ -39,4 +43,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all prepare compile clean fclean re
+.PHONY: all prepare compile clean fclean re so

@@ -13,10 +13,13 @@
 SOURCES = $(wildcard *.c)
 OBJECTS = $(patsubst %.c,objs/%.o,$(SOURCES))
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O3 -funroll-all-loops
+SOFLAGS = -fPIC -shared
 
 NAME = libft.a
 DYNN = libft.so
+
+CC = gcc
 
 all: prepare compile
 
@@ -29,10 +32,10 @@ $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 
 so: $(OBJECTS)
-	gcc -shared -fPIC -o $(DYNN) $(OBJECTS)
+	$(CC) $(SOFLAGS) -o $(DYNN) $(OBJECTS)
 
 objs/%.o: %.c
-	gcc $(FLAGS) -c -o $@ $<
+	$(CC) $(FLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)

@@ -6,11 +6,10 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:16:33 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 18:28:20 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:43:38 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)

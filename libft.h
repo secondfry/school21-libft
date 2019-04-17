@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/17 16:37:17 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:24:21 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 
 size_t	ft_mem_advance_by_ulong(void **b, t_ulong cell, size_t len);
-size_t  ft_mem_advance_by_eight_ulongs(void **b, t_ulong cell, size_t len);
+size_t	ft_mem_advance_by_eight_ulongs(void **b, t_ulong cell, size_t len);
 void	ft_print_memory(const void *addr, size_t size);
 
 #endif

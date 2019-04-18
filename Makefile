@@ -6,14 +6,14 @@
 #    By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2019/04/04 17:59:08 by oadhesiv         ###   ########.fr        #
+#    Updated: 2019/04/18 16:22:41 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES = $(wildcard *.c)
 OBJECTS = $(patsubst %.c,objs/%.o,$(SOURCES))
 
-FLAGS = -Wall -Wextra -Werror -O3 -funroll-all-loops
+FLAGS = -Wall -Wextra -Werror -O3 -funroll-loops
 SOFLAGS = -fPIC -shared
 
 NAME = libft.a

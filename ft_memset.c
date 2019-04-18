@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:49:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 14:19:59 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:23:25 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static size_t	fill_eight_ulongs(void **b, t_ulong cell, size_t len)
 	return (len);
 }
 
-static size_t  fill_ulong(void **b, t_ulong cell, size_t len)
+static size_t	fill_ulong(void **b, t_ulong cell, size_t len)
 {
-	t_ulong *dest;
-	size_t  ops;
+	t_ulong	*dest;
+	size_t	ops;
 
 	dest = (t_ulong*)*b;
 	ops = len / DATA_MODEL_LONG_WIDTH;
@@ -81,7 +81,7 @@ static size_t  fill_ulong(void **b, t_ulong cell, size_t len)
 	return (len);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+void			*ft_memset(void *b, int c, size_t len)
 {
 	t_ulong	cell;
 	t_ulong	*dest;

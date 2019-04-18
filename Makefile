@@ -42,7 +42,7 @@ clean:
 	rm -rfv objs
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(DYNN)
 
 re: fclean all
 

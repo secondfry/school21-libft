@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/17 17:24:21 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:29:11 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 
 # define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
+
 typedef unsigned char	t_byte;
 typedef unsigned long	t_ulong;
 

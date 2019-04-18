@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 19:44:41 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:29:11 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define LIBFT_H
 
 # include <string.h>
+
+# define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
+
+typedef unsigned char	t_byte;
+typedef unsigned long	t_ulong;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -29,5 +34,12 @@ char	*ft_strncpy(char *dst, const char *src, size_t len);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strncat(char *s1, const char *s2, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+
+size_t	ft_mem_advance_by_ulong(void **b, t_ulong cell, size_t len);
+size_t	ft_mem_advance_by_eight_ulongs(void **b, t_ulong cell, size_t len);
+void	ft_print_memory(const void *addr, size_t size);
 
 #endif

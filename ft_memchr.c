@@ -6,19 +6,42 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:56:22 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 19:01:15 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 17:11:51 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+static t_byte	check_long(const t_ulong *hay, t_byte needle)
 {
-	unsigned char	*str;
+	t_byte	*hay_byte;
+	t_byte	i;
 
-	str = (unsigned char *)s;
+	hay_byte = (t_byte*)hay;
+	i = 0;
+	while (i < DATA_MODEL_LONG_WIDTH)
+	{
+		if (hay_byte[i] == needle)
+			return (0);
+		++i;
+	}
+	return (1);
+}
+
+void			*ft_memchr(const void *s, int c, size_t n)
+{
+	t_ulong	*str_ulong;
+	t_byte	*str_byte;
+
+	str_ulong = (t_ulong *)s;
+	while (n > DATA_MODEL_LONG_WIDTH && check_long(str_ulong, (t_byte)c))
+	{
+		++str_ulong;
+		n -= DATA_MODEL_LONG_WIDTH;
+	}
+	str_byte = (t_byte *)str_ulong;
 	while (n--)
-		if (*str++ == (unsigned char)c)
-			return (--str);
+		if (*str_byte++ == (t_byte)c)
+			return (--str_byte);
 	return (NULL);
 }

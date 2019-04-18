@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:28:54 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 16:14:21 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:23:32 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void			*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	const t_ulong	*src_ulong;
 	t_byte			*dst_byte;
 	const t_byte	*src_byte;
-
 
 	dst_ulong = (t_ulong*)dst;
 	src_ulong = (const t_ulong*)src;

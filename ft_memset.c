@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:49:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 14:23:25 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 15:58:20 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void		align_pointer(void **b, int c, size_t *len)
 	dest = (t_byte*)*b;
 	while ((t_ulong)dest % DATA_MODEL_LONG_WIDTH != 0 && *len > 0)
 	{
-		*dest = (t_byte)c;
-		dest += 1;
+		*dest++ = (t_byte)c;
 		*len -= 1;
 	}
 	*b = (void*)dest;
@@ -73,8 +72,7 @@ static size_t	fill_ulong(void **b, t_ulong cell, size_t len)
 	ops = len / DATA_MODEL_LONG_WIDTH;
 	while (ops--)
 	{
-		*dest = cell;
-		dest += 1;
+		*dest++ = cell;
 		len -= DATA_MODEL_LONG_WIDTH;
 	}
 	*b = (void*)dest;

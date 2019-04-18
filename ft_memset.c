@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:49:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/17 17:24:11 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/18 11:47:44 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,49 @@ static void		align_pointer(void **b, int c, size_t *len)
 	*b = (void*)dest;
 }
 
+static size_t	fill_eight_ulongs(void **b, t_ulong cell, size_t len)
+{
+	t_ulong	*dest;
+	size_t	ops;
+	size_t	size;
+
+	dest = (t_ulong*)*b;
+	size = 8 * DATA_MODEL_LONG_WIDTH;
+	ops = len / size;
+	while (ops--)
+	{
+		*dest = cell;
+		*(dest + 1) = cell;
+		*(dest + 2) = cell;
+		*(dest + 3) = cell;
+		*(dest + 4) = cell;
+		*(dest + 5) = cell;
+		*(dest + 6) = cell;
+		*(dest + 7) = cell;
+		dest += 8;
+		len -= size;
+	}
+	*b = (void*)dest;
+	return (len);
+}
+
+static size_t  fill_ulong(void **b, t_ulong cell, size_t len)
+{
+	t_ulong *dest;
+	size_t  ops;
+
+	dest = (t_ulong*)*b;
+	ops = len / DATA_MODEL_LONG_WIDTH;
+	while (ops--)
+	{
+		*dest = cell;
+		dest += 1;
+		len -= DATA_MODEL_LONG_WIDTH;
+	}
+	*b = (void*)dest;
+	return (len);
+}
+
 void	*ft_memset(void *b, int c, size_t len)
 {
 	t_ulong	cell;
@@ -53,8 +96,8 @@ void	*ft_memset(void *b, int c, size_t len)
 	cell = make_memory_cell(c);
 	align_pointer(&b, c, &len);
 	dest = (t_ulong*)b;
-	len = ft_mem_advance_by_eight_ulongs((void**)&dest, cell, len);
-	len = ft_mem_advance_by_ulong((void**)&dest, cell, len);
+	len = fill_eight_ulongs((void**)&dest, cell, len);
+	len = fill_ulong((void**)&dest, cell, len);
 	dest_byte = (t_byte*)dest;
 	while (len--)
 		*dest_byte++ = (t_byte)c;

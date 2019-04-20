@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:28:54 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 17:16:03 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/20 16:16:18 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	size_t	copy_len;
 
 	ptr = ft_memchr(src, c, n);
-	if (ptr != (void*)0)
+	if (ptr)
 	{
 		copy_len = ptr - src + 1;
 		ft_memcpy(dst, src, copy_len);

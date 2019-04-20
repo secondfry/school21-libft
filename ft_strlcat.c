@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:38:06 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 20:07:42 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/20 17:51:20 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
-	cpy_len = src_len;
 	if (dst_len >= size)
 		return (size + src_len);
 	dst += dst_len;
 	size -= dst_len;
-	if (cpy_len >= size)
+	if (src_len >= size)
 		cpy_len = size - 1;
+	else
+		cpy_len = src_len;
 	ft_memcpy(dst, src, cpy_len);
-	dst[cpy_len] = 0;
+	*(dst + cpy_len) = 0;
 	return (dst_len + src_len);
 }

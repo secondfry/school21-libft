@@ -6,16 +6,16 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 19:10:10 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:15:20 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
 # define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
 
-typedef unsigned long	size_t;
+# include <string.h>
+
 typedef unsigned char	t_byte;
 typedef unsigned long	t_ulong;
 

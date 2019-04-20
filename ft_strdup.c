@@ -6,11 +6,10 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:15:47 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 17:48:26 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/20 17:24:46 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
 #include "libft.h"
 
@@ -21,10 +20,10 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1) + 1;
 	if (len + 1 == 0)
-		return ((void*)0);
-	ret = (char*)malloc(sizeof(ret) * len);
+		return ((void *)0);
+	ret = (char *)malloc(sizeof(char) * len);
 	if (!ret)
-		return ((void*)0);
+		return ((void *)0);
 	ft_strcpy(ret, s1);
 	return (ret);
 }

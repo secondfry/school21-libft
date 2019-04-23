@@ -12,6 +12,7 @@
 
 SOURCES = $(wildcard *.c)
 OBJECTS = $(patsubst %.c,objs/%.o,$(SOURCES))
+OBJ_DIR = ./objs
 
 FLAGS = -Wall -Wextra -Werror -O3 -funroll-loops
 SOFLAGS = -fPIC -shared
@@ -21,12 +22,10 @@ DYNN = libft.so
 
 CC = gcc
 
-all: prepare compile
+all: $(NAME)
 
-prepare:
-	mkdir -p objs
-
-compile: $(NAME) so
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
@@ -34,7 +33,7 @@ $(NAME): $(OBJECTS)
 so: $(OBJECTS)
 	$(CC) $(SOFLAGS) -o $(DYNN) $(OBJECTS)
 
-objs/%.o: %.c
+objs/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(FLAGS) -c -o $@ $<
 
 clean:
@@ -46,4 +45,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all prepare compile clean fclean re so
+.PHONY: all clean fclean re so

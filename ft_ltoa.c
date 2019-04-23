@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 14:20:16 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/23 15:15:02 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/23 15:33:29 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/23 16:43:48 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+char	*ft_ltoa(long n)
 {
-	ft_putstr_fd(str, 1);
+	return (ft_strdup(ft_ltoa_static(n)));
 }

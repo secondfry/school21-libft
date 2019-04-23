@@ -6,13 +6,14 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 19:15:20 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:46:13 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
+# define DATA_MODEL_LONG_DECIMAL_WIDTH 4 * sizeof(long) / sizeof(char)
 
 # include <string.h>
 
@@ -40,11 +41,21 @@ char	*ft_strstr(const char *haystack, const char *needle);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
+void	*ft_memalloc(size_t size);
+char	*ft_strnew(size_t size);
+char	*ft_itoa(int n);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
+void	ft_putendl(char const *s);
+void	ft_putnbr(int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
-size_t	ft_mem_advance_by_ulong(void **b, t_ulong cell, size_t len);
-size_t	ft_mem_advance_by_eight_ulongs(void **b, t_ulong cell, size_t len);
 void	ft_print_memory(const void *addr, size_t size);
+char	*ft_strrev(char *str);
+char	*ft_ltoa_static(long n);
+char	*ft_ltoa(long n);
 
 #endif

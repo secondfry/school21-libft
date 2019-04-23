@@ -6,13 +6,13 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 14:24:46 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 14:25:04 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:39:05 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	ft_putchar_fd(c, 1);
 }

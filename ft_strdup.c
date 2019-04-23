@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:15:47 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:28:05 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:26:29 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	*ft_strdup(const char *s1)
 	size_t	len;
 
 	len = ft_strlen(s1) + 1;
-	if (len + 1 == 0)
-		return ((void *)0);
-	ret = (char *)malloc(sizeof(char) * len);
+	ret = ft_strnew(len);
 	if (!ret)
 		return ((void *)0);
 	ft_memcpy(ret, s1, len);

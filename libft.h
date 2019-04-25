@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 15:44:53 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:26:07 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 ** `3 < log2 10 < 4` so we take 3 as desired delimeter
 */
 # define DATA_MODEL_LONG_DECIMAL_WIDTH (sizeof(long) / sizeof(char)) * 8 / 3
+
+/*
+** Hex representation of `2 ^ pow` number is at max `pow / log2 16` long
+*/
+# define DATA_MODEL_LONG_HEX_WIDTH (sizeof(long) / sizeof(char)) * 2
 
 /*
 ** `limits.h` are off limits, so we use our own
@@ -89,6 +94,7 @@ int		ft_tolower(int c);
 ** Part 2
 */
 void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);
 char	*ft_itoa(int n);
 void	ft_putchar(char c);
@@ -109,6 +115,7 @@ void	ft_putnbr_fd(int n, int fd);
 */
 void	ft_print_memory(const void *addr, size_t size);
 char	*ft_strrev(char *str);
+char	*ft_ltoa_hex_static(long n);
 char	*ft_ltoa_static(long n);
 char	*ft_ltoa(long n);
 void	ft_putlong_fd(long n, int fd);

@@ -6,20 +6,38 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/23 16:46:13 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/25 12:39:17 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
-# define DATA_MODEL_LONG_DECIMAL_WIDTH 4 * sizeof(long) / sizeof(char)
 
+/*
+** It could be that sizeof(char) is not 1 somewhere...
+*/
+# define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
+
+/*
+** Decimal representation of `2 ^ pow` number is at max `pow / log2 10` long
+** `3 < log2 10 < 4` so we take 3 as desired delimeter
+*/
+# define DATA_MODEL_LONG_DECIMAL_WIDTH (sizeof(long) / sizeof(char)) * 8 / 3
+
+/*
+** Including `string.h` as norminette doesn't like size_t typedef
+*/
 # include <string.h>
 
+/*
+** Wonderful typedefs
+*/
 typedef unsigned char	t_byte;
 typedef unsigned long	t_ulong;
 
+/*
+** Part 1
+*/
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -41,6 +59,9 @@ char	*ft_strstr(const char *haystack, const char *needle);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
+/*
+** Part 2
+*/
 void	*ft_memalloc(size_t size);
 char	*ft_strnew(size_t size);
 char	*ft_itoa(int n);
@@ -53,6 +74,13 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+/*
+** Bonus
+*/
+
+/*
+** Personal functions
+*/
 void	ft_print_memory(const void *addr, size_t size);
 char	*ft_strrev(char *str);
 char	*ft_ltoa_static(long n);

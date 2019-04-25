@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 15:11:21 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 15:46:26 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/25 15:13:35 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/25 15:46:06 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_isalpha(int c)
 {
-	write(fd, &c, 1);
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
 }

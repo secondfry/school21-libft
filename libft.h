@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 12:39:17 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:44:53 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@
 ** `3 < log2 10 < 4` so we take 3 as desired delimeter
 */
 # define DATA_MODEL_LONG_DECIMAL_WIDTH (sizeof(long) / sizeof(char)) * 8 / 3
+
+/*
+** `limits.h` are off limits, so we use our own
+*/
+# ifndef LONG_MIN
+#  ifdef _LP64
+#   define LONG_MIN 9223372036854775808U
+#  else
+#   define LONG_MIN 2147483648U
+#  endif
+# endif
+# ifndef LONG_MAX
+#  ifdef _LP64
+#   define LONG_MAX 9223372036854775807U
+#  else
+#   define LONG_MAX 2147483647U
+#  endif
+# endif
 
 /*
 ** Including `string.h` as norminette doesn't like size_t typedef
@@ -58,6 +76,14 @@ char	*ft_strstr(const char *haystack, const char *needle);
 
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(const char *str);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 /*
 ** Part 2
@@ -85,5 +111,10 @@ void	ft_print_memory(const void *addr, size_t size);
 char	*ft_strrev(char *str);
 char	*ft_ltoa_static(long n);
 char	*ft_ltoa(long n);
+void	ft_putlong_fd(long n, int fd);
+void	ft_putlong(long n);
+int		ft_isspace(int c);
+long	ft_atol(const char *str);
+long	ft_strtol(const char *str, char **endptr, int base);
 
 #endif

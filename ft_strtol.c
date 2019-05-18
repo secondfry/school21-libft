@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:17:03 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 15:23:40 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/05/18 17:39:57 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,6 @@ static t_byte	ft_issign(char c)
 	return (0);
 }
 
-static t_byte	is_same_sign(long a, long b)
-{
-	if (a < 0 && b < 0)
-		return (1);
-	if (a >= 0 && b >= 0)
-		return (1);
-	return (0);
-}
-
 /*
 ** endptr is not implemented
 ** base is not implemented
@@ -35,7 +26,7 @@ static t_byte	is_same_sign(long a, long b)
 
 long			ft_strtol(const char *str, char **endptr, int base)
 {
-	long	ret;
+	t_ulong	ret;
 	char	sign;
 	size_t	i;
 
@@ -50,7 +41,8 @@ long			ft_strtol(const char *str, char **endptr, int base)
 		sign = str[i++] == '-' ? -1 : 1;
 	while (str[i] && ft_isdigit(str[i]))
 	{
-		if (!is_same_sign(ret, ret * base))
+		if (ret > LONG_MAX / base
+			|| (t_byte)(str[i] - 48) > LONG_MAX - ret * base)
 			return (sign == -1 ? LONG_MIN : LONG_MAX);
 		ret = ret * base + str[i] - 48;
 		i++;

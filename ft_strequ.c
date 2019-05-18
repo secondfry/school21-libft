@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/25 17:25:10 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/25 17:27:32 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	if (!s1 || !s2)
+		return (0);
+	if (ft_strcmp(s1, s2) == 0)
+		return (1);
+	return (0);
 }

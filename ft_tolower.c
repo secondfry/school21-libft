@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/25 15:20:15 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/25 15:46:44 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int		ft_tolower(int c)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	if (c > 64 && c < 91)
+		return (c + 32);
+	return (c);
 }

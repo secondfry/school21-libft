@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/05/18 14:13:33 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/05/18 14:34:28 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	t_list	*tmp;
+
+	if (!alst)
+		return ;
+	tmp = *alst;
+	del(tmp->content, tmp->content_size);
+	free(tmp);
+	*alst = (void *)0;
 }

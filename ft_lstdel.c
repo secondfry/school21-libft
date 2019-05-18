@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/05/18 14:17:02 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/05/18 14:20:24 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	t_list	*tmp;
+	t_list	*next;
+
+	tmp = *alst;
+	while (tmp)
+	{
+		del(tmp->content, tmp->content_size);
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	*alst = (void *)0;
 }

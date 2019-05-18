@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/20 19:00:05 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/20 19:00:34 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	cmp_len;
+
+	s1_len = ft_strlen(s1) + 1;
+	s2_len = ft_strlen(s2) + 1;
+	if (s1_len > s2_len)
+		cmp_len = s2_len;
+	else
+		cmp_len = s1_len;
+	if (cmp_len > n)
+		cmp_len = n;
+	return (ft_memcmp(s1, s2, cmp_len));
 }

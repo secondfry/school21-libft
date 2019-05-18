@@ -6,19 +6,31 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:03:42 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/04 19:40:41 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/04/20 11:47:17 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*s1_byte;
-	const unsigned char	*s2_byte;
+	const t_ulong	*s1_ulong;
+	const t_ulong	*s2_ulong;
+	const t_byte	*s1_byte;
+	const t_byte	*s2_byte;
 
-	s1_byte = (const unsigned char *)s1;
-	s2_byte = (const unsigned char *)s2;
+	s1_ulong = (const t_ulong *)s1;
+	s2_ulong = (const t_ulong *)s2;
+	while (n > DATA_MODEL_LONG_WIDTH)
+	{
+		if (*s1_ulong != *s2_ulong)
+			break ;
+		s1_ulong += 1;
+		s2_ulong += 1;
+		n -= DATA_MODEL_LONG_WIDTH;
+	}
+	s1_byte = (const t_byte *)s1_ulong;
+	s2_byte = (const t_byte *)s2_ulong;
 	while (n--)
 		if (*s1_byte++ != *s2_byte++)
 			return (*--s1_byte - *--s2_byte);

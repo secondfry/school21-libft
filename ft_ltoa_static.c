@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_ltoa_static.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/23 15:33:29 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/23 16:30:58 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_ltoa_static(long n)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	static char	buffer[DATA_MODEL_LONG_DECIMAL_WIDTH];
+	t_ulong		tmp;
+	t_byte		i;
+
+	if (n == 0)
+		return ("0");
+	ft_bzero(buffer, DATA_MODEL_LONG_DECIMAL_WIDTH);
+	tmp = n < 0 ? -n : n;
+	i = 0;
+	while (tmp != 0)
+	{
+		buffer[i++] = tmp % 10 + 48;
+		tmp /= 10;
+	}
+	if (n < 0)
+		buffer[i] = '-';
+	return (ft_strrev(buffer));
 }

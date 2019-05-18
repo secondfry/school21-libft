@@ -6,11 +6,17 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:56:57 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/17 14:20:08 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/05/18 13:29:25 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void		ft_print_memory_ptr(t_byte *data)
+{
+	ft_putstr(ft_ltoa_hex_static((long)data));
+	ft_putstr("  ");
+}
 
 static t_byte	ft_print_memory_hex(t_byte *data, size_t size)
 {
@@ -41,10 +47,9 @@ static t_byte	ft_print_memory_hex(t_byte *data, size_t size)
 static t_byte	ft_print_memory_data(t_byte *data, size_t size)
 {
 	t_byte	i;
-	t_byte	q;
 
 	i = 0;
-	ft_putchar('|');
+	ft_putstr(" |");
 	while (i < 16 && i < size)
 	{
 		if (data[i] > 31 && data[i] < 127)
@@ -52,12 +57,6 @@ static t_byte	ft_print_memory_data(t_byte *data, size_t size)
 		else
 			ft_putchar('.');
 		i++;
-	}
-	q = 0;
-	while (i + q < 16)
-	{
-		ft_putchar(' ');
-		q++;
 	}
 	ft_putchar('|');
 	return (i);
@@ -72,6 +71,7 @@ void			ft_print_memory(const void *addr, size_t size)
 	data = (t_byte*)addr;
 	while (size)
 	{
+		ft_print_memory_ptr(data);
 		i = ft_print_memory_hex(data, size);
 		i = ft_print_memory_data(data, size);
 		size -= i;

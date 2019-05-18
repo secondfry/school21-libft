@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:27:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:40:19 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/04/25 17:28:13 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/04/25 17:33:27 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	char	*ret;
+
+	if (!s)
+		return ((void *)0);
+	if (len + 1 == 0)
+		return ((void *)0);
+	ret = ft_strnew(len + 1);
+	if (!ret)
+		return ((void *)0);
+	ft_strcpy(ret, s + start);
+	ret[len] = 0;
+	return (ret);
 }

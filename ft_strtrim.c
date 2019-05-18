@@ -1,27 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 19:15:47 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/23 16:26:29 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/05/18 12:50:25 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/05/18 13:16:37 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+static char	*find_end(char *str)
 {
+	char	*ret;
+
+	ret = str;
+	while (*str)
+	{
+		while (*str && !ft_isspace(*str))
+			str++;
+		ret = str;
+		while (ft_isspace(*str))
+			str++;
+	}
+	return (ret);
+}
+
+char		*ft_strtrim(char const *s)
+{
+	char	*start;
+	char	*end;
 	char	*ret;
 	size_t	len;
 
-	len = ft_strlen(s1) + 1;
-	ret = ft_strnew(len);
+	if (!s)
+		return ((void *)0);
+	while (ft_isspace(*s))
+		s++;
+	start = (char *)s;
+	end = find_end(start);
+	len = end - start;
+	ret = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return ((void *)0);
-	ft_memcpy(ret, s1, len);
+	ft_strncpy(ret, start, len);
+	ret[len] = 0;
 	return (ret);
 }

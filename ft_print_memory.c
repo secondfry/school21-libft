@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:56:57 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 16:34:29 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/05/18 13:29:25 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static t_byte	ft_print_memory_hex(t_byte *data, size_t size)
 static t_byte	ft_print_memory_data(t_byte *data, size_t size)
 {
 	t_byte	i;
-	t_byte	q;
 
 	i = 0;
 	ft_putstr(" |");
@@ -58,12 +57,6 @@ static t_byte	ft_print_memory_data(t_byte *data, size_t size)
 		else
 			ft_putchar('.');
 		i++;
-	}
-	q = 0;
-	while (i + q < 16)
-	{
-		ft_putchar(' ');
-		q++;
 	}
 	ft_putchar('|');
 	return (i);

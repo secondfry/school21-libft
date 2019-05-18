@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/20 18:48:25 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 12:41:31 by oadhesiv         ###   ########.fr       */
+/*   Created: 2019/05/18 14:22:32 by oadhesiv          #+#    #+#             */
+/*   Updated: 2019/05/18 14:23:31 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *haystack, const char *needle)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	return (ft_strnstr(haystack, needle, ft_strlen(haystack)));
+	while (lst)
+	{
+		f(lst);
+		lst = lst->next;
+	}
 }

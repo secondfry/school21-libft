@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:28:13 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/25 17:33:27 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 22:35:22 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	ret = ft_strnew(len + 1);
 	if (!ret)
 		return ((void *)0);
-	ft_strcpy(ret, s + start);
+	ft_strncpy(ret, s + start, len);
 	ret[len] = 0;
 	return (ret);
 }

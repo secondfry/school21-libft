@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:42:38 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 13:46:00 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 23:57:33 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return ((void *)0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	len = s1_len + s2_len + 1;
-	if (len < s1_len)
+	len = s1_len + s2_len;
+	if (len + 1 < s1_len)
 		return ((void *)0);
-	ret = (char *)malloc(sizeof(char) * len);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return ((void *)0);
 	ft_strcpy(ret, s1);

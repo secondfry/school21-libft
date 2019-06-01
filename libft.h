@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 14:24:15 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:59:36 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,7 @@ void			ft_putlong(long n);
 int				ft_isspace(int c);
 long			ft_atol(const char *str);
 long			ft_strtol(const char *str, char **endptr, int base);
+void			ft_print_ptr(void *data);
+void			ft_print_list(t_list *root);
 
 #endif

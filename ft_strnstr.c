@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:30:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 16:31:23 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:58:11 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*tmp;
 	size_t	needle_len;
 
+	if (!haystack || !needle || !len)
+		return ((char *)haystack);
 	if (!*needle)
 		return ((char *)haystack);
 	needle_len = ft_strlen(needle);
@@ -27,7 +29,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		tmp = ft_strchr(ptr, *needle);
 		if ((t_ulong)(tmp - ptr) > len)
 			return ((void *)0);
-		len -= tmp - ptr + 1;
+		len -= tmp - ptr;
 		ptr = tmp;
 		if (!ptr)
 			return ((void *)0);

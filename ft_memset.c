@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:49:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/18 15:58:20 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:48:08 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,7 @@ void			*ft_memset(void *b, int c, size_t len)
 	void	*ret;
 
 	if (!b || !len)
-	{
 		return (b);
-	}
 	ret = b;
 	cell = make_memory_cell(c);
 	align_pointer(&b, c, &len);

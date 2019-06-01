@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:56:22 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:06:06 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:48:54 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			*ft_memchr(const void *s, int c, size_t n)
 	t_ulong	*str_ulong;
 	t_byte	c_byte;
 
-	if (!s || n == 0)
+	if (!s || !n)
 		return ((void *)0);
 	c_byte = (t_byte)c;
 	ret = align_pointer(&s, c_byte, &n);

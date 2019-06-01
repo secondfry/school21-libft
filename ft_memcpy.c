@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:23:47 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/17 17:37:28 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:45:31 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	t_byte			*dst_byte;
 	const t_byte	*src_byte;
 
+	if (!dst || !src || !n)
+		return (dst);
 	dst_ulong = (t_ulong*)dst;
 	src_ulong = (const t_ulong*)src;
 	while (n > DATA_MODEL_LONG_WIDTH)

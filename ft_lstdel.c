@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:17:02 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 14:20:24 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:41:45 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 	{
 		del(tmp->content, tmp->content_size);
 		next = tmp->next;
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		tmp = next;
 	}
 	*alst = (void *)0;

@@ -6,17 +6,11 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:56:57 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 13:29:25 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:58:48 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void		ft_print_memory_ptr(t_byte *data)
-{
-	ft_putstr(ft_ltoa_hex_static((long)data));
-	ft_putstr("  ");
-}
 
 static t_byte	ft_print_memory_hex(t_byte *data, size_t size)
 {
@@ -71,7 +65,8 @@ void			ft_print_memory(const void *addr, size_t size)
 	data = (t_byte*)addr;
 	while (size)
 	{
-		ft_print_memory_ptr(data);
+		ft_print_ptr(data);
+		ft_putchar(' ');
 		i = ft_print_memory_hex(data, size);
 		i = ft_print_memory_data(data, size);
 		size -= i;

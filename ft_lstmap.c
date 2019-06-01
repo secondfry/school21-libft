@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:23:49 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 14:39:15 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:42:03 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	cleanup(void *content, size_t len)
 {
 	len = 0;
-	free(content);
+	ft_memdel((void **)&content);
 }
 
 static char	check(t_list **lst, t_list *elem)

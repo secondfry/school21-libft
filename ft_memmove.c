@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:33:29 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 15:00:17 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:47:46 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	t_byte			*dst_byte;
 	const t_byte	*src_byte;
 
-	if (!src)
-		return ((void *)0);
+	if (!dst || !src || !len)
+		return (dst);
 	if (dst < src)
 		return (ft_memcpy(dst, src, len));
 	dst_ulong = (t_ulong*)((t_byte*)dst + len);

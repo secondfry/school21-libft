@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:17:06 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 13:42:50 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:42:25 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ static void		cleanup(char **arr, size_t len)
 
 	i = 0;
 	while (i < len)
-		free(arr[i]);
-	free(arr);
+		ft_memdel((void **)&arr[i]);
+	ft_memdel((void **)&arr);
 }
 
 char			**ft_strsplit(char const *s, char c)
@@ -94,7 +94,7 @@ char			**ft_strsplit(char const *s, char c)
 		ret[i] = make_word(&s, c);
 		if (!ret[i])
 		{
-			cleanup(ret, words_count);
+			cleanup(ret, i);
 			return ((void *)0);
 		}
 		i++;

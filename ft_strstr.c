@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 18:48:25 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 12:41:31 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:55:42 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	return (ft_strnstr(haystack, needle, ft_strlen(haystack)));
+	return (ft_strnstr(haystack, needle, ft_strlen(haystack) + 1));
 }

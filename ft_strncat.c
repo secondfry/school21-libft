@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:33:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:49:58 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:53:09 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 	size_t	copy_len;
 	char	*ret;
 
+	if (!s1 || !s2 || !n)
+		return (s1);
 	ret = s1;
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);

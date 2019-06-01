@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:00:54 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/05/18 14:14:00 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/06/01 15:42:10 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		tmp = (void *)malloc(content_size);
 		if (!tmp)
 		{
-			free(ret);
+			ft_memdel((void **)&ret);
 			return ((void *)0);
 		}
 		ft_memcpy(tmp, content, content_size);

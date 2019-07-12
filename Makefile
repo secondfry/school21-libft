@@ -3,38 +3,43 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+         #
+#    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2019/05/18 14:13:17 by oadhesiv         ###   ########.fr        #
+#    Updated: 2019/07/12 16:44:50 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FUNCTIONS_PART1 = memset bzero memcpy memccpy memmove memchr memcmp \
-				strlen strdup strcpy strncpy strcat strncat strlcat strchr \
-				strrchr strstr strnstr strcmp strncmp \
-				atoi isalpha isdigit isalnum isascii isprint \
-				toupper tolower
+	strlen strdup strcpy strncpy strcat strncat strlcat strchr strrchr strstr \
+	strnstr strcmp strncmp \
+	atoi \
+	isalpha isdigit isalnum isascii isprint \
+	toupper tolower
 
 FUNCTIONS_PART2 = memalloc memdel \
-				strnew strdel strclr striter striteri strmap strmapi strequ \
-				strnequ strsub strjoin strtrim strsplit \
-				itoa \
-				putchar putstr putendl putnbr \
-				putchar_fd putstr_fd putendl_fd putnbr_fd
+	strnew strdel strclr striter striteri strmap strmapi strequ strnequ \
+	strsub strjoin strtrim strsplit \
+	itoa \
+	putchar putstr putendl putnbr \
+	putchar_fd putstr_fd putendl_fd putnbr_fd
 
 FUNCTIONS_BONUS = lstnew lstdelone lstdel lstadd lstiter lstmap
 
-FUNCTIONS_PRSNL = print_memory strrev ltoa_static ltoa
+FUNCTIONS_PRSNL = atol ltoa ltoa_static ltoa_hex_static \
+	putlong putlong_fd putchar_color putstr_color \
+	print_ptr print_memory print_list \
+	strrev strtol \
+	isspace
 
 FUNCTIONS = $(FUNCTIONS_PART1)\
 			$(FUNCTIONS_PART2)\
 			$(FUNCTIONS_BONUS)\
 			$(FUNCTIONS_PRSNL)
 
-OBJECTS = $(patsubst %,objs/ft_%.o,$(FUNCTIONS))
-SOURCES = $(wildcard *.c)
-OBJECTS = $(patsubst %.c,objs/%.o,$(SOURCES))
+OBJECTS = $(patsubst %,objs/ft_%.o,$(FUNCTIONS)) \
+	objs/get_next_line.o
+
 OBJ_DIR = ./objs
 
 FLAGS = -Wall -Wextra -Werror -O1 -funroll-loops

@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/07/05 16:47:28 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:51:14 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ void			ft_putlong(long n);
 ** Prints `str` as string to stdout in specified color and then clears the color
 */
 void			ft_putstr_color(char *str, t_byte color);
+void			ft_putchar_color(char c, t_byte color);
 
 /*
 ** Other personal functions

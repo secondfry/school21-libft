@@ -14,5 +14,7 @@
 
 long	ft_atol(const char *str)
 {
-	return (ft_strtol(str, (char **)0, 10));
+	char *endptr;
+
+	return (ft_strtol(str, &endptr, 10));
 }

@@ -14,7 +14,7 @@
 
 static char	byte_to_hex(t_byte b)
 {
-	if (b >= 0 && b < 16)
+	if (b < 16)
 		return ("0123456789ABCDEF"[b]);
 	return ('.');
 }

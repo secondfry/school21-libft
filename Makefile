@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
+#    By: oadhesiv <secondfry+school21@gmail.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2019/07/12 17:47:16 by oadhesiv         ###   ########.fr        #
+#    Updated: 2020/03/07 00:06:03 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ LFT_FUNCTIONS_PRSNL = atol ltoa ltoa_static ltoa_hex_static \
 	putlong putlong_fd putchar_color putstr_color \
 	print_ptr print_memory print_list \
 	strrev strtol \
-	isspace
+	isspace \
+	ptr_check
 
 LFT_FUNCTIONS = $(LFT_FUNCTIONS_PART1)\
 				$(LFT_FUNCTIONS_PART2)\
@@ -45,13 +46,22 @@ OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS)) \
 
 OBJ_DIR = ./objs
 
-FLAGS = -Wall -Wextra -Werror -O1 -funroll-loops
-SOFLAGS = -fPIC -shared
+CFLAGS_ERRORS = -Wall -Wextra -Werror
+CFLAGS_OPTIMIZATIONS = -O3 -funroll-loops
+CFLAGS_DEPENDENCIES = -MMD -MP
+CFLAGS_SO = -fPIC -shared
+CFLAGS_DEBUG = -O0 -pg -g -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fsanitize=address
+CFLAGS_FINAL =	$(CFLAGS_ERRORS) $(CFLAGS_OPTIMIZATIONS) \
+				$(CFLAGS_DEPENDENCIES) $(CFLAGS)
 
 NAME = libft.a
 DYNN = libft.so
 
-CC = gcc
+ifeq ($(origin CC), default)
+CC = clang
+endif
+
+.PHONY: all clean fclean re so
 
 all: $(NAME)
 
@@ -61,11 +71,14 @@ $(OBJ_DIR):
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 
-so: $(OBJECTS)
-	$(CC) $(SOFLAGS) -o $(DYNN) $(OBJECTS)
+so: $(DYNN)
 
+$(DYNN): $(OBJECTS)
+	$(CC) $(CFLAGS_SO) -o $(DYNN) $(OBJECTS)
+
+-include $(DEPS)
 objs/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS_FINAL) -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)
@@ -75,5 +88,3 @@ fclean: clean
 	rm -f $(NAME) $(DYNN)
 
 re: fclean all
-
-.PHONY: all clean fclean re so

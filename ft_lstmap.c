@@ -15,7 +15,7 @@
 
 static void	cleanup(void *content, size_t len)
 {
-	len = 0;
+    (void)len;
 	ft_memdel((void **)&content);
 }
 

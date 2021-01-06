@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:21:38 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/07/12 17:43:29 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_byte_array	*byte_array_new(size_t len)
 {
 	t_byte_array	*ret;
 
-	len = len + DATA_MODEL_LONG_WIDTH - len % DATA_MODEL_LONG_WIDTH;
+	len = len + sizeof(long) - len % sizeof(long);
 	ret = (t_byte_array *)malloc(sizeof(t_byte_array));
 	if (!ret)
 		return ((void *)0);

@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2020/03/08 02:06:09 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 # define LIBFT_H
 
 /*
-** It could be that sizeof(char) is not 1 somewhere...
+** # define DATA_MODEL_LONG_WIDTH sizeof(long)
+** But The Norm prohibits constant expressions...
 */
-# define DATA_MODEL_LONG_WIDTH sizeof(long) / sizeof(char)
 
 /*
 ** Decimal representation of `2 ^ pow` number is at max `pow / log2 10` long
-** `3 < log2 10 < 4` so we take 3 as desired delimeter
+** `3 < log2 10 < 4` so we take 3 as desired delimeter.
+** # define DATA_MODEL_LONG_DECIMAL_WIDTH sizeof(long) * 8 / 3
+** But The Norm prohibits constant expressions...
 */
-# define DATA_MODEL_LONG_DECIMAL_WIDTH (sizeof(long) / sizeof(char)) * 8 / 3
 
 /*
 ** Hex representation of `2 ^ pow` number is at max `pow / log2 16` long
+** # define DATA_MODEL_LONG_HEX_WIDTH sizeof(long) * 2
+** But The Norm prohibits constant expressions...
 */
-# define DATA_MODEL_LONG_HEX_WIDTH (sizeof(long) / sizeof(char)) * 2
 
 /*
 ** `limits.h` are off limits, so we use our own
@@ -70,7 +72,11 @@
 /*
 ** Including `string.h` as norminette doesn't like size_t typedef
 */
-# include <string.h>
+# ifdef __unix__
+#  include <string.h>
+# elif defined(_WIN32) || defined(_WIN64)
+#  include <cstring>
+# endif
 
 /*
 ** Seems like the only reasonable thing to do

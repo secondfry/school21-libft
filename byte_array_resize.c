@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:30:40 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/07/12 17:47:51 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_byte_array	*byte_array_resize(t_byte_array *arr, size_t len)
 
 	if (!arr)
 		return ((void *)0);
-	len = len + DATA_MODEL_LONG_WIDTH - len % DATA_MODEL_LONG_WIDTH;
+	len = len + sizeof(long) - len % sizeof(long);
 	ret = byte_array_new(len);
 	if (!ret)
 		return ((void *)0);

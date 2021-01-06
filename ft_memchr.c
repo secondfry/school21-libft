@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:56:22 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/06/01 15:48:54 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_ulong	make_memory_cell(int c)
 
 	ret = (t_byte)c;
 	i = 1;
-	while (i < DATA_MODEL_LONG_WIDTH)
+	while (i < sizeof(long))
 		ret |= ret << 8 * i++;
 	return (ret);
 }
@@ -29,7 +29,7 @@ static void		*align_pointer(const void **b, t_byte c, size_t *len)
 	t_byte	*dest;
 
 	dest = (t_byte*)*b;
-	while ((t_ulong)dest % DATA_MODEL_LONG_WIDTH != 0 && *len)
+	while ((t_ulong)dest % sizeof(long) != 0 && *len)
 	{
 		if (*dest == c)
 			return (dest);
@@ -95,13 +95,13 @@ void			*ft_memchr(const void *s, int c, size_t n)
 	if (ret)
 		return (ret);
 	str_ulong = (t_ulong *)s;
-	while (n > DATA_MODEL_LONG_WIDTH)
+	while (n > sizeof(long))
 	{
 		ret = check_ulong(str_ulong, c_byte);
 		if (ret)
 			return (ret);
 		str_ulong++;
-		n -= DATA_MODEL_LONG_WIDTH;
+		n -= sizeof(long);
 	}
 	ret = check_bytes((t_byte *)str_ulong, c_byte, n);
 	if (ret)

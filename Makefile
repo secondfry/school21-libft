@@ -6,7 +6,7 @@
 #    By: oadhesiv <secondfry+school21@gmail.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2020/03/07 00:06:03 by oadhesiv         ###   ########.fr        #
+#    Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,12 @@ CFLAGS_ERRORS = -Wall -Wextra -Werror
 CFLAGS_OPTIMIZATIONS = -O3 -funroll-loops
 CFLAGS_DEPENDENCIES = -MMD -MP
 CFLAGS_SO = -fPIC -shared
-CFLAGS_DEBUG = -O0 -pg -g -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fsanitize=address
-CFLAGS_FINAL =	$(CFLAGS_ERRORS) $(CFLAGS_OPTIMIZATIONS) \
-				$(CFLAGS_DEPENDENCIES) $(CFLAGS)
+CFLAGS_DEBUG =	-O0 \
+				-pg -g \
+				-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer \
+				-fsanitize=address
+CFLAGS :=	$(CFLAGS_ERRORS) $(CFLAGS_OPTIMIZATIONS) $(CFLAGS_DEPENDENCIES) \
+			$(CFLAGS)
 
 NAME = libft.a
 DYNN = libft.so
@@ -78,7 +81,7 @@ $(DYNN): $(OBJECTS)
 
 -include $(DEPS)
 objs/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS_FINAL) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)

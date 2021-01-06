@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:11:17 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/20 17:19:38 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_ulong	make_memory_cell(int c)
 
 	ret = (t_byte)c;
 	i = 1;
-	while (i < DATA_MODEL_LONG_WIDTH)
+	while (i < sizeof(long))
 		ret |= ret << 8 * i++;
 	return (ret);
 }
@@ -29,7 +29,7 @@ static void		*align_pointer(const char **b)
 	t_byte	*dest;
 
 	dest = (t_byte*)*b;
-	while ((t_ulong)dest % DATA_MODEL_LONG_WIDTH != 0)
+	while ((t_ulong)dest % sizeof(long) != 0)
 	{
 		if (*dest == 0)
 			return (dest);

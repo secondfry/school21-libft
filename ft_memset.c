@@ -6,7 +6,7 @@
 /*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:49:01 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/06/01 15:48:08 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_ulong	make_memory_cell(int c)
 
 	ret = (t_byte)c;
 	i = 1;
-	while (i < DATA_MODEL_LONG_WIDTH)
+	while (i < sizeof(long))
 		ret |= ret << 8 * i++;
 	return (ret);
 }
@@ -29,7 +29,7 @@ static void		align_pointer(void **b, int c, size_t *len)
 	t_byte	*dest;
 
 	dest = (t_byte*)*b;
-	while ((t_ulong)dest % DATA_MODEL_LONG_WIDTH != 0 && *len > 0)
+	while ((t_ulong)dest % sizeof(long) != 0 && *len > 0)
 	{
 		*dest++ = (t_byte)c;
 		*len -= 1;
@@ -44,7 +44,7 @@ static size_t	fill_eight_ulongs(void **b, t_ulong cell, size_t len)
 	size_t	size;
 
 	dest = (t_ulong*)*b;
-	size = 8 * DATA_MODEL_LONG_WIDTH;
+	size = 8 * sizeof(long);
 	ops = len / size;
 	while (ops--)
 	{
@@ -69,11 +69,11 @@ static size_t	fill_ulong(void **b, t_ulong cell, size_t len)
 	size_t	ops;
 
 	dest = (t_ulong*)*b;
-	ops = len / DATA_MODEL_LONG_WIDTH;
+	ops = len / sizeof(long);
 	while (ops--)
 	{
 		*dest++ = cell;
-		len -= DATA_MODEL_LONG_WIDTH;
+		len -= sizeof(long);
 	}
 	*b = (void*)dest;
 	return (len);

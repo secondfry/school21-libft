@@ -6,7 +6,7 @@
 #    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2021/01/28 15:03:06 by oadhesiv         ###   ########.fr        #
+#    Updated: 2021/01/28 15:27:07 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ CFLAGS_DEBUG =	-O0 \
 				-pg -g \
 				-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer \
 				-fsanitize=address
+CFLAGS_EXPLORATION = -include stdlib.h -D BZERO=bzero
 CFLAGS :=	$(CFLAGS_ERRORS) $(CFLAGS_OPTIMIZATIONS) $(CFLAGS_DEPENDENCIES) \
 			$(CFLAGS)
 
@@ -79,6 +80,9 @@ $(DYNN): $(OBJECTS)
 
 objs/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+objs/ft_memalloc.o: ft_memalloc.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(CFLAGS_EXPLORATION) -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)

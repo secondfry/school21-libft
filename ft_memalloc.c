@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:46:18 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/04/23 16:51:18 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:24:07 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	*ft_memalloc(size_t size)
 	ret = malloc(size);
 	if (!ret)
 		return ((void *)0);
-	ft_bzero(ret, size);
+	BZERO(ret, size);
 	return (ret);
 }

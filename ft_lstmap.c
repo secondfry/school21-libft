@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:23:49 by oadhesiv          #+#    #+#             */
-/*   Updated: 2019/06/01 15:42:03 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:41:26 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	cleanup(void *content, size_t len)
 {
-    (void)len;
+	(void)len;
 	ft_memdel((void **)&content);
 }
 

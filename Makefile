@@ -6,7 +6,7 @@
 #    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2021/01/28 14:54:27 by oadhesiv         ###   ########.fr        #
+#    Updated: 2021/01/28 15:03:06 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ LFT_FUNCTIONS = $(LFT_FUNCTIONS_PART1)\
 				$(LFT_FUNCTIONS_PRSNL)
 
 OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS))
+DEPS =		$(patsubst %,objs/ft_%.d,$(LFT_FUNCTIONS))
 
 OBJ_DIR = ./objs
 
@@ -64,6 +65,8 @@ endif
 
 all: $(NAME)
 
+-include $(DEPS)
+
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
@@ -75,7 +78,6 @@ so: $(DYNN)
 $(DYNN): $(OBJECTS)
 	$(CC) $(CFLAGS_SO) -o $(DYNN) $(OBJECTS)
 
--include $(DEPS)
 objs/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 

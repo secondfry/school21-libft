@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ltoa_hex_static.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oadhesiv <oadhesiv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 16:21:37 by oadhesiv          #+#    #+#             */
-/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:17:24 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static char	byte_to_hex(t_byte b)
 
 char		*ft_ltoa_hex_static(long n)
 {
-	static char	buffer[sizeof(long) * 2];
+	static char	buffer[DATA_MODEL_LONG_HEX_WIDTH];
 	t_ulong		tmp;
 	t_byte		i;
 
 	if (n == 0)
 		return ("0");
-	ft_bzero(buffer, sizeof(long) * 2);
+	ft_bzero(buffer, DATA_MODEL_LONG_HEX_WIDTH);
 	tmp = n < 0 ? -n : n;
 	i = 0;
 	while (tmp != 0)

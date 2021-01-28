@@ -6,30 +6,12 @@
 /*   By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:21:31 by oadhesiv          #+#    #+#             */
-/*   Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:23:14 by oadhesiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-/*
-** # define DATA_MODEL_LONG_WIDTH sizeof(long)
-** But The Norm prohibits constant expressions...
-*/
-
-/*
-** Decimal representation of `2 ^ pow` number is at max `pow / log2 10` long
-** `3 < log2 10 < 4` so we take 3 as desired delimeter.
-** # define DATA_MODEL_LONG_DECIMAL_WIDTH sizeof(long) * 8 / 3
-** But The Norm prohibits constant expressions...
-*/
-
-/*
-** Hex representation of `2 ^ pow` number is at max `pow / log2 16` long
-** # define DATA_MODEL_LONG_HEX_WIDTH sizeof(long) * 2
-** But The Norm prohibits constant expressions...
-*/
 
 /*
 ** `limits.h` are off limits, so we use our own
@@ -82,6 +64,18 @@
 ** Seems like the only reasonable thing to do
 */
 # define ENOMEM		12
+
+/*
+** Decimal representation of `2 ^ pow` number is at max `pow / log2 10` long
+** `3 < log2 10 < 4` so we take 3 as desired delimeter.
+** Hex representation of `2 ^ pow` number is at max `pow / log2 16` long
+*/
+
+enum	e_widths
+{
+	DATA_MODEL_LONG_DECIMAL_WIDTH = sizeof(long) * 8 / 3,
+	DATA_MODEL_LONG_HEX_WIDTH = sizeof(long) * 2
+};
 
 /*
 ** Wonderful typedefs

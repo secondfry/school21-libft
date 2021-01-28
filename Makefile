@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oadhesiv <secondfry+school21@gmail.com>    +#+  +:+       +#+         #
+#    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr        #
+#    Updated: 2021/01/28 14:58:23 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ FUNCTIONS = get_next_line \
 
 OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS)) \
 			$(patsubst %,objs/%.o,$(FUNCTIONS))
+DEPS =		$(patsubst %,objs/ft_%.d,$(LFT_FUNCTIONS)) \
+			$(patsubst %,objs/%.d,$(FUNCTIONS))
 
 OBJ_DIR = ./objs
 
@@ -68,6 +70,8 @@ endif
 
 all: $(NAME)
 
+-include $(DEPS)
+
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
@@ -79,7 +83,6 @@ so: $(DYNN)
 $(DYNN): $(OBJECTS)
 	$(CC) $(CFLAGS_SO) -o $(DYNN) $(OBJECTS)
 
--include $(DEPS)
 objs/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 

@@ -30,8 +30,7 @@ LFT_FUNCTIONS_PRSNL = atol ltoa ltoa_static ltoa_hex_static \
 	putlong putlong_fd putchar_color putstr_color \
 	print_ptr print_memory print_list \
 	strrev strtol \
-	isspace \
-	ptr_check
+	isspace
 
 LFT_FUNCTIONS = $(LFT_FUNCTIONS_PART1)\
 				$(LFT_FUNCTIONS_PART2)\

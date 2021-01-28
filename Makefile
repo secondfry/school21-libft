@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oadhesiv <secondfry+school21@gmail.com>    +#+  +:+       +#+         #
+#    By: oadhesiv <oadhesiv@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:41:01 by oadhesiv          #+#    #+#              #
-#    Updated: 2021/01/06 18:00:00 by oadhesiv         ###   ########.fr        #
+#    Updated: 2021/01/28 14:54:27 by oadhesiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,7 @@ LFT_FUNCTIONS = $(LFT_FUNCTIONS_PART1)\
 				$(LFT_FUNCTIONS_BONUS)\
 				$(LFT_FUNCTIONS_PRSNL)
 
-FUNCTIONS = get_next_line \
-	byte_array_new byte_array_resize byte_array_add byte_array_has
-
-OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS)) \
-			$(patsubst %,objs/%.o,$(FUNCTIONS))
+OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS))
 
 OBJ_DIR = ./objs
 
